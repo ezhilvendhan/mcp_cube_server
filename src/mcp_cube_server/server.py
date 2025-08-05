@@ -38,7 +38,7 @@ class CubeClient:
 
     def _request(self, route: Route, **params):
         request_time = time.time()
-        headers = {"Authorization": self.token}
+        headers = {"Authorization": self.token, "x-api-key": self.api_secret}
         url = f"{self.endpoint if self.endpoint[-1] != '/' else self.endpoint[:-1]}/{route}"
         serialized_params = {k: json.dumps(v) for k, v in params.items()}
 
